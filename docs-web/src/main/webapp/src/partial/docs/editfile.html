@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit File</title>
+  <style>
+    body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+    #button-container {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+    }
+    #button-container button {
+        margin-left: 5px;
+    }
+    canvas {
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<!-- Canvas 画布 -->
+<canvas id="canvas" width="800" height="600"></canvas>
+
+<!-- 按钮容器 -->
+<div id="button-container">
+  <button id="save-button">保存</button>
+  <button id="cancel-button">取消</button>
+  <button id="reset-button">重置</button>
+  <button id="add-text-button">添加文字</button>
+</div>
+
+<script src="app/docs/controller/document/scriptEF.js"></script>
+</body>
+</html>
