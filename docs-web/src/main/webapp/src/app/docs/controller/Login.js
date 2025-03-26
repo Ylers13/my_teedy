@@ -100,7 +100,8 @@ angular.module('docs').controller('Login', function(Restangular, $scope, $rootSc
   };
 });
 
-// Add this new controller for registration modal
+
+
 angular.module('docs').controller('ModalRegister', function($scope, $uibModalInstance, Restangular, $translate, $dialog) {
   $scope.registration = {
     username: '',
@@ -119,13 +120,13 @@ angular.module('docs').controller('ModalRegister', function($scope, $uibModalIns
       return;
     }
 
-    // Submit registration
-    Restangular.one('user').post('register', {
+    // Submit registration with `disabled: true` (自动禁用)
+    Restangular.one('user').put({
       username: $scope.registration.username,
       email: $scope.registration.email,
-      password: $scope.registration.password
+      password: $scope.registration.password,
+      disabled: true // 强制禁用，无需用户手动选择
     }).then(function() {
-      // Return the registered user info to the login controller
       $uibModalInstance.close({
         username: $scope.registration.username,
         password: $scope.registration.password

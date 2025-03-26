@@ -10,7 +10,7 @@ angular.module('docs').controller('SettingsUserEdit', function($scope, $dialog, 
   $scope.isEdit = function () {
     return $stateParams.username;
   };
-  
+
   /**
    * In edit mode, load the current user.
    */
