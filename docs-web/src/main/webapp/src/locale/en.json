@@ -14,7 +14,22 @@
     "password_lost_sent_title": "Password reset email sent",
     "password_lost_sent_message": "An email has been sent to <strong>{{ username }}</strong> to reset your password",
     "password_lost_error_title": "Password reset error",
-    "password_lost_error_message": "Unable to send a password reset email, please contact your administrator for a manual reset"
+    "password_lost_error_message": "Unable to send a password reset email, please contact your administrator for a manual reset",
+
+
+    "register_title": "Register New Account",
+    "register_btn": "Register",
+    "confirm_password": "Confirm Password",
+    "registration_success_title": "Registration Successful",
+    "registration_success_message": "Your account has been created successfully. You can now login.",
+    "registration_error_title": "Registration Error",
+    "registration_error_message": "An error occurred during registration. Please try again.",
+    "registration_password_mismatch": "The passwords you entered do not match."
+
+
+
+
+
   },
   "passwordlost": {
     "title": "Password lost",

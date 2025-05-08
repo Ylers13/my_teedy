@@ -81,19 +81,35 @@ public class UserResource extends BaseResource {
         @FormParam("password") String password,
         @FormParam("email") String email,
         @FormParam("storage_quota") String storageQuotaStr) {
+
+
+        /*
         if (!authenticate()) {
             throw new ForbiddenClientException();
         }
+
+
         checkBaseFunction(BaseFunction.ADMIN);
-        
+        */
+
+
+
         // Validate the input data
         username = ValidationUtil.validateLength(username, "username", 3, 50);
         ValidationUtil.validateUsername(username, "username");
         password = ValidationUtil.validateLength(password, "password", 8, 50);
         email = ValidationUtil.validateLength(email, "email", 1, 100);
-        Long storageQuota = ValidationUtil.validateLong(storageQuotaStr, "storage_quota");
         ValidationUtil.validateEmail(email, "email");
-        
+        Long storageQuota;
+        try {
+            storageQuota = Strings.isNullOrEmpty(storageQuotaStr) ?
+                    1000L : // 默认 1GB (如果未提供或为空)
+                    Long.parseLong(storageQuotaStr); // 转换为数字
+        } catch (NumberFormatException e) {
+            throw new ClientException("ValidationError", "storage_quota must be a number");
+        }
+
+
         // Create the user
         User user = new User();
         user.setRoleId(Constants.DEFAULT_USER_ROLE);
@@ -103,10 +119,17 @@ public class UserResource extends BaseResource {
         user.setStorageQuota(storageQuota);
         user.setOnboarding(true);
 
+
+        user.setDisableDate(new Date());
+
+
+
+
+
         // Create the user
         UserDao userDao = new UserDao();
         try {
-            userDao.create(user, principal.getId());
+            userDao.create(user, "system");
         } catch (Exception e) {
             if ("AlreadyExistingUsername".equals(e.getMessage())) {
                 throw new ClientException("AlreadyExistingUsername", "Login already used", e);
@@ -114,7 +137,7 @@ public class UserResource extends BaseResource {
                 throw new ServerException("UnknownError", "Unknown server error", e);
             }
         }
-        
+
         // Always return OK
         JsonObjectBuilder response = Json.createObjectBuilder()
                 .add("status", "ok");

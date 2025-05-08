@@ -98,6 +98,12 @@ angular.module('docs').controller('FileModalView', function ($uibModalInstance, 
     }
   };
 
+  $scope.editFile = function () {
+      // 打开编辑页面，传递 fileId 作为 URL 参数
+      var editWindow = window.open(`partial/docs/editfile.html?fileId=${$stateParams.fileId}`, '_blank');
+  };
+
+
   /**
    * Close the file preview.
    */

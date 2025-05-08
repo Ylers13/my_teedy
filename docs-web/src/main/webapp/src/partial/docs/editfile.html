@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片编辑器</title>
+  <style>
+    body {
+      background-color: white;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    #button-container {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    #button-container button {
+      margin: 0;
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      min-width: 100px;
+      font-size: 14px;
+    }
+    #button-container button:hover {
+      background-color: #45a049;
+    }
+    #rotate-buttons {
+      display: flex;
+      gap: 5px;
+    }
+    #rotate-buttons button {
+      flex: 1;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #ddd;
+      background-color: #f5f5f5;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
+
+<div id="button-container">
+  <button id="add-text-button">添加文字</button>
+  <div id="rotate-buttons">
+    <button id="rotate-left-button">左旋 (15°)</button>
+    <button id="rotate-right-button">右旋 (15°)</button>
+  </div>
+  <button id="save-button">保存图片</button>
+  <button id="reset-button">重置</button>
+  <button id="cancel-button">取消</button>
+</div>
+
+<script src="app/docs/controller/document/scriptEF.js"></script>
+</body>
+</html>
