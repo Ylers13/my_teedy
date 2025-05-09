@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{ 'login.register_title' | translate }}</h3>
+</div>
+<div class="modal-body">
+  <form name="registerForm" novalidate>
+    <div class="form-group">
+      <label>{{ 'login.username' | translate }}</label>
+      <input type="text" class="form-control" ng-model="registration.username" required>
+    </div>
+    <div class="form-group">
+      <label>{{ 'login.email' | translate }}</label>
+      <input type="email" class="form-control" ng-model="registration.email" required>
+    </div>
+    <div class="form-group">
+      <label>{{ 'login.password' | translate }}</label>
+      <input type="password" class="form-control" ng-model="registration.password" required>
+    </div>
+    <div class="form-group">
+      <label>{{ 'login.confirm_password' | translate }}</label>
+      <input type="password" class="form-control" ng-model="registration.confirmPassword" required>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="cancel()">{{ 'cancel' | translate }}</button>
+  <button class="btn btn-primary" ng-click="register()" ng-disabled="registerForm.$invalid">{{ 'login.register_btn' | translate }}</button>
+</div>
