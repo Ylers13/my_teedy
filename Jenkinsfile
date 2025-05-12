@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 checkout scmGit(
-                    branches: [[name: '*/master']],
+                    branches: [[name: '*/lab10']],
                     extensions: [],
                     userRemoteConfigs: [[url: 'https://github.com/Ylers13/my_teedy']] // your github Repository
                 )
